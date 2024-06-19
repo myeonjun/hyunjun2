@@ -1,0 +1,187 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Portfolio</title>
+            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+            <style>
+            </style>
+        </head>
+        <body>
+            <header>
+                <div class="logo">
+                    <a href=""><img src="Hyun Jun.png" alt="Logo"></a>
+                <nav>
+                    <a href="#home" class="active">Home</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#works">Works</a>
+                </nav>
+            </header>
+
+            <div class="section show" id="home">
+                <h1><span id="char1">H</span><span id="char2">Y</span><span id="char3">U</span><span id="char4">N</span><span id="char5">J</span><span id="char6">U</span><span id="char7">N</span><span id="char8">'</span><span id="char9">s</span><br><span id="char10">p</span><span id="char11">o</span><span id="char12">r</span><span id="char13">t</span><span id="char14">f</span><span id="char15">o</span><span id="char16">l</span><span id="char17">i</span><span id="char18">o</span></h1>
+                <div class="rectangle-container">
+                    <div class="rectangle"></div>
+                    <div class="rectangle"></div>
+                </div>
+            </div>
+            
+
+            <div class="section" id="profile">
+                <div class="profile-content">
+                    <div class="image-content">
+                        <img src="이면준.png" alt="" width="500">
+                    </div>
+                    <div class="text-content">
+                        <h1>Profile</h1>
+                        <p><strong>NAME</strong><br>임현준 <br>
+                        <br> <strong>CONTACT</strong><br>abcd1234@example.com<br>010-1234-5678
+                        <br> <br> <strong>LICENSE</strong> <br> GTQ(PS/AI/ID) <br>ITQ(한글)
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="skills">
+                <h1>Skills</h1>
+                <p>My skills</p>
+                <div class="icons">
+                    <div class="icon-container"></div>
+                    <img src="Adobe_Photoshop_CC_icon.svg.png" alt="">
+                    <img src="5968472.png" alt="">
+                    <img src="5968482.png" alt="">
+                    <img src="Adobe_After_Effects_CC_icon.svg.png" alt="">
+                    <img src="906324.png" alt="">
+                </div>
+            </div>
+
+            <div class="section" id="works">
+                <h1>Works</h1>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="캡처.PNG" alt="Project 1"></div>
+                        <div class="swiper-slide"><img src="4.PNG" alt="Project 2"></div>
+                        <div class="swiper-slide"><img src="땅두릅.PNG" alt="Project 3"></div>
+                        <div class="swiper-slide"><img src="대지 1.png" alt="Project 4"></div>
+                        <div class="swiper-slide"><img src="마리오.PNG" alt="Project 5"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!-- ScrollMagic 및 GSAP 라이브러리 추가 -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+            <script>
+                const sections = document.querySelectorAll('.section');
+                const navLinks = document.querySelectorAll('header a');
+                const colors = [
+                    '#0009c4', // Home
+                    '#000000', // About
+                    '#000000', // Skills
+                    '#000000', // Works
+                ];
+
+                function checkScroll() {
+                    const scrollPosition = window.scrollY + window.innerHeight / 2;
+                    sections.forEach((section, index) => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            document.body.style.backgroundColor = colors[index];
+                            section.classList.add('show');
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            navLinks[index].classList.add('active');
+                        } else {
+                            section.classList.remove('show');
+                        }
+                    });
+                }
+
+                window.addEventListener('scroll', checkScroll);
+                window.addEventListener('load', () => {
+                    // Initialize Swiper
+                    const swiper = new Swiper('.swiper-container', {
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+
+                    checkScroll();
+                });
+
+                // ScrollMagic 애니메이션 추가
+                const controller = new ScrollMagic.Controller();
+
+                sections.forEach((section) => {
+                    // Create a GSAP timeline for each section
+                    const tl = gsap.timeline();
+                    tl.from(section.querySelector('h1'), { opacity: 0, y: 30, duration: 0.4, ease: 'power2.out' });
+                    tl.from(section.querySelector('p'), { opacity: 0, y: 30, duration: 0.4, ease: 'power2.out' }, '-=0.3');
+
+                    const scene = new ScrollMagic.Scene({
+                        triggerElement: section,
+                        triggerHook: 0.75, // 섹션이 화면의 75%에 도달하면 애니메이션 시작
+                        reverse: true // 스크롤 역방향으로 되돌아갈 때 애니메이션 되풀이
+                    })
+                    .setTween(tl)
+                    .addTo(controller);
+                });
+
+                // Skills 섹션 아이콘 애니메이션 추가
+                const icons = document.querySelectorAll('#skills .icons img');
+                icons.forEach((icon, index) => {
+                    const iconTl = gsap.timeline();
+                    iconTl.to(icon, { opacity: 1, duration: 0.5, ease: 'power2.out', delay: index * 0.3 });
+
+                    new ScrollMagic.Scene({
+                        triggerElement: icon,
+                        triggerHook: 0.75,
+                        reverse: true
+                    })
+                    .setTween(iconTl)
+                    .addTo(controller);
+                });
+                
+// 아이콘 클릭 이벤트 추가
+                icons.forEach((icon) => {
+                    icon.addEventListener('click', () => {
+                        icon.classList.add('clicked');
+                        setTimeout(() => {
+                            icon.classList.remove('clicked');
+                        }, 300); // 애니메이션 지속 시간과 일치하게 설정
+                    });
+                });
+
+                // 각 글자 요소에 클릭 이벤트 추가
+        const chars = document.querySelectorAll('#home h1 span');
+
+        chars.forEach((char) => {
+            char.addEventListener('click', () => {
+                char.classList.add('clicked');
+                setTimeout(() => {
+                    char.classList.remove('clicked');
+                }, 300); // 애니메이션 지속 시간과 일치하게 설정
+            });
+        });
+
+        
+
+            </script>
+        </body>
+        </html>

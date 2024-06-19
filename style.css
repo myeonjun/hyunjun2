@@ -1,0 +1,321 @@
+/* 기존 CSS 코드... */
+
+/* 아이콘 클릭 애니메이션 스타일 */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.clicked {
+    animation: pop 0.3s ease-out; /* 애니메이션 이름과 지속 시간 */
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Hide the horizontal scrollbar */
+    transition: background-color 0.5s ease-out;
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1 {
+    color: #fff;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #ddd;
+    font-size: 20px;
+    max-width: 800px;
+}
+
+.projects, .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project, .contact-item {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    color: white;
+}
+
+/* Added styles for Photoshop icon */
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icons img {
+    width: 100px;
+    height: 100px;
+    opacity: 0; /* 아이콘 숨기기 */
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 변경 */
+    border-radius: 10px;
+}
+
+.project button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: inherit;
+    transition: color 0.3s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.project button div {
+    background-color: #4b0082;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    color: white;
+}
+
+.project button:hover div {
+    background-color: #555;
+}
+
+#works .projects .project a:visited {
+    color: white;
+}
+
+.project button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: inherit;
+    transition: color 0.3s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.project button div {
+    background-color: #4b0082;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    color: white;
+}
+
+.project button:hover div {
+    background-color: #555;
+}
+
+@font-face {
+    font-family: 'Freesentation-9Black';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+#home h1 {
+    font-family: 'Freesentation-9Black', Arial, sans-serif; /* Freesentation-9Black 폰트 적용 */
+    font-size: 170px; /* 크기 조정 */
+    text-align: left; /* 텍스트를 왼쪽 정렬로 변경 */
+    margin-left: -700px; /* 왼쪽으로 20px 이동 */
+}
+
+.rectangle-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* 위쪽 여백 추가 */
+    margin-left: -980px;
+}
+
+.rectangle {
+    width: 300px; /* 가로 길이 조정 */
+    height: 35px; /* 세로 길이 조정 */
+    background-color: #fff; /* 배경색 설정 */
+    margin: 0 15px; /* 직사각형 사이 간격 조정 */
+}
+
+header {
+    font-family: 'Freesentation-9Black', Arial, sans-serif;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background-color 0.5s ease-out;
+    border-radius: 0 0 10px 10px;
+    display: flex; /* Flexbox 사용 */
+    flex-direction: row; /* 가로로 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.logo img {
+    width: 80px; /* Adjust the width as needed */
+    margin-right: 1273px;
+}
+
+header nav {
+    display: flex;
+    gap: 10px; /* 링크 사이의 간격 조정 */
+    margin-left: auto; /* 네비게이션을 오른쪽으로 정렬 */
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header a:hover {
+    background-color: r;
+    color: #fff;
+    border-radius: 5px;
+}
+
+header a.active {
+    color: #fff;
+    border-radius: 5px;
+}
+
+.section#profile .profile-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section#profile .text-content {
+    flex: 1;
+    text-align: left; /* 텍스트를 오른쪽 정렬로 변경 */
+    margin-left: 50px; /* 텍스트와 이미지 사이 간격 조정 */
+}
+
+.section#profile .image-content {
+    flex: 1;
+    text-align: left; /* 이미지를 왼쪽 정렬로 변경 */
+    margin-right: 50px; /* 이미지와 텍스트 사이 간격 조정 */
+}
+
+#profile h1 {
+    margin-right: 0; /* 텍스트 오른쪽 마진 제거 */
+}
+
+#profile p {
+    margin: 0; /* 기본 마진 제거 */
+    font-family: 'SUIT-Regular', Arial, sans-serif; /* SUIT-Regular 폰트 적용 */
+    font-weight: normal; /* 폰트 두껍기 설정 */
+    color: #ddd; /* 폰트 색상 지정 */
+    line-height: 1.5; /* 텍스트 간격 조정 */
+}
+
+body {
+    font-family: 'Freesentation-9Black', Arial, sans-serif; /* Freesentation-9Black 폰트 적용 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Freesentation-9Black', Arial, sans-serif; /* Freesentation-9Black 폰트 적용 */
+}
+
+p, a, span, div, li {
+    font-family: 'Freesentation-9Black', Arial, sans-serif; /* Freesentation-9Black 폰트 적용 */
+}
+
+/* Swiper specific styles */
+.swiper-container {
+    width: 100%;
+    max-width: 600px; /* Further reduce max width for Swiper */
+    height: 70%; /* Adjust height as needed */
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 80%; /* Further reduce width */
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;
+}
+
+.swiper-pagination-bullet {
+    background: #fff;
+}
+
+/* 아이콘 호버 시 마우스 커서 변경 */
+.icons img {
+    cursor: pointer; /* 포인터 커서로 변경 */
+}
+
+/* 아이콘 호버 시 추가 스타일 (선택 사항) */
+.icons img:hover {
+    transform: scale(1.1); /* 호버 시 살짝 커지는 효과 */
+    transition: transform 0.3s ease-out; /* 애니메이션 효과 */
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.clicked {
+    animation: pop 0.3s ease-out; /* 애니메이션 이름과 지속 시간 */
+}
+
